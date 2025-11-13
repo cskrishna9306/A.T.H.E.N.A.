@@ -9,7 +9,13 @@ Automated Tracking &amp; Heuristic Engine for Networked Assets
 
 ## Installation
 
-1. (Optional) Create and activate a virtual environment.
+1. Create and activate a virtual environment (replace `.venv` with your preferred path):
+
+   ```
+   python -m venv .venv
+   source .venv/bin/activate
+   ```
+
 2. Install the project in editable mode so the agent code can be modified without reinstalling:
 
    ```
