@@ -1,15 +1,16 @@
-import asyncio
 from autogen_agentchat.agents import AssistantAgent
-from autogen_agentchat.ui import Console
 
 # Import custom modules
 from src.tools import (
+    get_top_k_bq_users,
+    get_top_k_bq_tables,
     delete_bq_table,
     delete_bq_dataset,
 )
 from src.config import (
     model_client,
 )
+from src.utils import load_system_prompt
 
 class BigQueryAnalyst(AssistantAgent):
     """
@@ -20,34 +21,8 @@ class BigQueryAnalyst(AssistantAgent):
         super().__init__(
             name="big_query_analyst",
             model_client=model_client,
-            tools=[delete_bq_table, delete_bq_dataset],
-            # system_message=load_system_prompt("big_query_analyst_prompt.md"),
+            tools=[get_top_k_bq_users, get_top_k_bq_tables, delete_bq_table, delete_bq_dataset],
+            system_message=load_system_prompt("bigquery_analyst_prompt.md"),
         )
 
         return
-
-async def main():
-    """
-    Main function to run and test the Big Query Analyst.
-    """
-    
-    # Instantiate the BigQuery Analyst Agent
-    agent = BigQueryAnalyst()
-    
-    print("\n--- Chat Started ---")
-    print("Type 'exit', 'quit', or 'terminate' to end the chat.\n")
-
-    while True:
-        user_input = input("You: ")
-        if user_input.lower() in ["exit", "quit", "terminate"]:
-            break
-        
-        await Console(
-            agent.run_stream(task=user_input),
-        )
-        
-        
-    return    
-
-if __name__ == "__main__":
-    asyncio.run(main())
