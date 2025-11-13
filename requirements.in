@@ -1,1 +1,8 @@
+python-dotenv
 google-cloud-bigquery
+langchain
+langchain-openai
+langchain-tools
+pyautogen
+autogen-agentchat
+autogen-ext
