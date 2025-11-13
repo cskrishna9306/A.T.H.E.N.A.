@@ -9,8 +9,11 @@ description = ""
 readme = "README.md"
 license = { file = "LICENSE" }
 dependencies = [
-    "dotenv",
+    "python-dotenv",
+    "google-cloud-bigquery",
     "autogen-agentchat>=0.7.5",
-    "autogen-ext[openai]>=0.7.5"
+    "autogen-ext[openai]>=0.7.5",
+    "pandas",
+    "db-dtypes"
 ]
 
