@@ -1,5 +1,6 @@
 python-dotenv
 google-cloud-bigquery
-pyautogen
 autogen-agentchat
-autogen-ext
+autogen-ext[openai]
+pandas
+db-dtypes
